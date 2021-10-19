@@ -36,3 +36,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+dist/main.js
+dist/main.js.map
+dist/vendor.js
+dist/vendor.js.map
