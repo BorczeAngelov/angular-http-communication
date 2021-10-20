@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators'
 import { Book } from "app/models/book";
 import { Reader } from "app/models/reader";
 import { DataService } from 'app/core/data.service';
+import { BookTrackerError } from 'app/models/bookTrackerError';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,8 +24,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getAllBooks().subscribe(
-      data => this.allBooks = data,
-      err => console.log(err),
+      (data: Book[] | BookTrackerError) => this.allBooks = <Book[]>data,
+      (err: BookTrackerError) => console.log(err.friendlyMessage),
       () => console.log('getAllBooks completed')
     );
 
